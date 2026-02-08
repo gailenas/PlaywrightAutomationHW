@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:chromium": "npx playwright test --project=chromium --headed",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:chromiumHeaded": "npx playwright test --project=chromium --headed",
     "test:firefox": "npx playwright test --project=firefox",
+    "test:firefoxHeaded": "npx playwright test --project=firefox --headed",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
