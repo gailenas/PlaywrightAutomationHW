@@ -35,10 +35,21 @@ export class SearchResultsPage {
     await this.submitPriceButton.click();
   }
 
+  async getProductTitle(index: number) {
+    let productTitle = await this.page.locator(`ul.srp-results.srp-list.clearfix > li:nth-child(${index}) a`).nth(2).innerText();
+    return productTitle.replace('Opens in a new window or tab', '');
+  }
+
   async openResultByIndex(index: number): Promise<Page> {
     const productPagePromise = this.page.waitForEvent('popup');
     await this.page.locator(`ul.srp-results.srp-list.clearfix > li:nth-child(${index}) a`).first().click();
     const popup = await productPagePromise;
     return popup;
+  }
+
+  async validateFilterEnabled(filterValue: string) {
+    let filterLocator = this.page.getByRole('link', { name: `${filterValue} Remove filter` })
+      await expect(filterLocator).toBeVisible();
+
   }
 }
