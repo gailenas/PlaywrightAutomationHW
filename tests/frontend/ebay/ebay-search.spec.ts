@@ -3,6 +3,7 @@ import { HomePage } from '../pages/home.page.js';
 import { SearchResultsPage } from '../pages/search-results.page.js';
 import { ProductPage } from '../pages/product.page.js';
 import { CartPage } from '../pages/cart.page.js';
+import { setTimeout } from 'node:timers/promises';
 
 test('Search for headphones, filter by Sony and price, add to cart and remove', async ({
   page,
@@ -36,7 +37,7 @@ test('Search for headphones, filter by Sony, confirm filter works', async ({ pag
   await searchResultsPage.validateFilterEnabled('Sony');
 });
 
-test('Search for headphones, filter by Sony and price, confirm if right product opened', async ({
+test('Search for headphones, filter by Sony, confirm if right product opened', async ({
   page,
 }) => {
   const homePage = new HomePage(page);
@@ -49,4 +50,20 @@ test('Search for headphones, filter by Sony and price, confirm if right product 
   page = await searchResultsPage.openResultByIndex(3);
   const productPage = new ProductPage(page);
   await productPage.verifyRightProductOpened(productTitle);
+});
+
+test.only('Search for headphones, filter by Sony and price, try to purchase more than available', async ({
+  page,
+}) => {
+  const homePage = new HomePage(page);
+  const searchResultsPage = new SearchResultsPage(page);
+
+  await homePage.navigate();
+  await homePage.searchFor('headphones');
+  await searchResultsPage.filterByBrand('Sony');
+  page = await searchResultsPage.openResultByIndex(3);
+  const productPage = new ProductPage(page);
+  await productPage.enterQuantity("10000");
+  await productPage.verifyWarningIsVisible();
+  await setTimeout(30000);
 });
