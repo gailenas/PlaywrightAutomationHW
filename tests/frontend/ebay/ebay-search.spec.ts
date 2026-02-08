@@ -52,7 +52,7 @@ test('Search for headphones, filter by Sony, confirm if right product opened', a
   await productPage.verifyRightProductOpened(productTitle);
 });
 
-test.only('Search for headphones, filter by Sony and price, try to purchase more than available', async ({
+test('Search for headphones, filter by Sony and price, try to purchase more than available', async ({
   page,
 }) => {
   const homePage = new HomePage(page);
