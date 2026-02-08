@@ -26,5 +26,8 @@
     "@types/node": "^25.2.2",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.4"
   }
 }

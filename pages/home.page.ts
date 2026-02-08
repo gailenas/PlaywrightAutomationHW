@@ -10,7 +10,7 @@ export class HomePage {
   }
 
   async navigate(): Promise<void> {
-    await this.page.goto('https://www.ebay.com/');
+    await this.page.goto('/');
   }
 
   async searchFor(term: string): Promise<void> {

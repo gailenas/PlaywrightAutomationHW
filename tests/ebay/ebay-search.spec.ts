@@ -36,7 +36,7 @@ test('Search for headphones, filter by Sony, confirm filter works', async ({ pag
   await searchResultsPage.validateFilterEnabled('Sony');
 });
 
-test.only('Search for headphones, filter by Sony and price, confirm if right product opened', async ({
+test('Search for headphones, filter by Sony and price, confirm if right product opened', async ({
   page,
 }) => {
   const homePage = new HomePage(page);
