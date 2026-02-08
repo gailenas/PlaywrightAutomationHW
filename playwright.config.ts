@@ -31,17 +31,25 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'api',
+      testDir: './tests/api',
+    },
+
+    {
       name: 'chromium',
+      testDir: './tests/frontend',
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
+      testDir: './tests/frontend',
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      testDir: './tests/frontend',
       use: { ...devices['Desktop Safari'] },
     },
 

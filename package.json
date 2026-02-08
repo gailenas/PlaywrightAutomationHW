@@ -9,6 +9,7 @@
     "test:chromiumHeaded": "npx playwright test --project=chromium --headed",
     "test:firefox": "npx playwright test --project=firefox",
     "test:firefoxHeaded": "npx playwright test --project=firefox --headed",
+    "test:api": "npx playwright test --project=api",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
