@@ -3,7 +3,7 @@ import axios from '../api-client.js';
 import { type Pet } from '../interfaces/pet.interface.js';
 
 export class PetEndpoint {
-  static async create(
+  static async postCreate(
     body: Pet,
     headers?: AxiosRequestHeaders,
   ): Promise<AxiosResponse<Pet>> {
@@ -17,7 +17,7 @@ export class PetEndpoint {
     return axios.get(`/pet/${petId}`, { headers });
   }
 
-  static async delete(
+  static async deleteById(
     petId: number,
     headers?: AxiosRequestHeaders,
   ): Promise<AxiosResponse> {

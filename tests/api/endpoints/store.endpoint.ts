@@ -3,7 +3,7 @@ import axios from '../api-client.js';
 import { type Order } from '../interfaces/order.interface.js';
 
 export class StoreEndpoint {
-  static async placeOrder(
+  static async postOrder(
     body: Order,
     headers?: AxiosRequestHeaders,
   ): Promise<AxiosResponse<Order>> {
@@ -17,7 +17,7 @@ export class StoreEndpoint {
     return axios.get(`/store/order/${orderId}`, { headers });
   }
 
-  static async deleteOrder(
+  static async deleteOrderById(
     orderId: number,
     headers?: AxiosRequestHeaders,
   ): Promise<AxiosResponse> {
