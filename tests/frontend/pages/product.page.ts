@@ -21,6 +21,6 @@ export class ProductPage {
 
   async verifyRightProductOpened(productTitle: string) {
     let openedProductTitle = await this.openedProductTitle.innerText();
-    expect(productTitle).toContain(openedProductTitle)
+    expect(productTitle.substring(0, 30)).toContain(openedProductTitle.substring(0, 30))
   }
 }

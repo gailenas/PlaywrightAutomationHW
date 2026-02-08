@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
-import { HomePage } from '../../pages/home.page.js';
-import { SearchResultsPage } from '../../pages/search-results.page.js';
-import { ProductPage } from '../../pages/product.page.js';
-import { CartPage } from '../../pages/cart.page.js';
+import { HomePage } from '../pages/home.page.js';
+import { SearchResultsPage } from '../pages/search-results.page.js';
+import { ProductPage } from '../pages/product.page.js';
+import { CartPage } from '../pages/cart.page.js';
 
 test('Search for headphones, filter by Sony and price, add to cart and remove', async ({
   page,
