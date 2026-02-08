@@ -13,8 +13,9 @@ export class PetEndpoint {
   static async getById(
     petId: number,
     headers?: AxiosRequestHeaders,
+    expectedStatus?: number,
   ): Promise<AxiosResponse<Pet>> {
-    return axios.get(`/pet/${petId}`, { headers });
+    return axios.get(`/pet/${petId}`, { headers, expectedStatus });
   }
 
   static async deleteById(

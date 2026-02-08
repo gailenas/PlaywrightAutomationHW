@@ -1,8 +1,14 @@
-import Axios from 'axios';
+import Axios, { type InternalAxiosRequestConfig } from 'axios';
 import dotenv from 'dotenv';
 import path from 'path';
 
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
+declare module 'axios' {
+  interface AxiosRequestConfig {
+    expectedStatus?: number;
+  }
+}
 
 const axios = Axios.create({
   baseURL: process.env.API_BASE_URL,
@@ -25,7 +31,11 @@ axios.interceptors.response.use(
     const status = error.response?.status ?? 'NO_RESPONSE';
     const method = error.config?.method?.toUpperCase();
     const url = error.config?.url;
-    console.error(`[API Error] ${method} ${url} → ${status}`);
+    const expectedStatus = (error.config as InternalAxiosRequestConfig)?.expectedStatus;
+
+    if (status !== expectedStatus) {
+      console.error(`[API Error] ${method} ${url} → ${status}`);
+    }
     return Promise.reject(error);
   },
 );

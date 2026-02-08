@@ -13,8 +13,9 @@ export class StoreEndpoint {
   static async getOrderById(
     orderId: number,
     headers?: AxiosRequestHeaders,
+    expectedStatus?: number,
   ): Promise<AxiosResponse<Order>> {
-    return axios.get(`/store/order/${orderId}`, { headers });
+    return axios.get(`/store/order/${orderId}`, { headers, expectedStatus });
   }
 
   static async deleteOrderById(
