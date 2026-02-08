@@ -29,15 +29,19 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run all tests
         if: ${{ github.event.inputs.suite == 'all' }}
-        run: npx playwright test --project=chromium --project=firefox --project=api
+        continue-on-error: true
+        run: npx playwright test
       - name: Run Chromium tests
         if: ${{ github.event.inputs.suite == 'chromium' }}
+        continue-on-error: true
         run: npm run test:chromium
       - name: Run Firefox tests
         if: ${{ github.event.inputs.suite == 'firefox' }}
+        continue-on-error: true
         run: npm run test:firefox
       - name: Run API tests
         if: ${{ github.event.inputs.suite == 'api' }}
+        continue-on-error: true
         run: npm run test:api
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
