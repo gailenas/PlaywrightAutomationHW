@@ -61,7 +61,7 @@ test('Search for headphones, filter by Sony and price, try to purchase more than
   await homePage.navigate();
   await homePage.searchFor('headphones');
   await searchResultsPage.filterByBrand('Sony');
-  await searchResultsPage.setPriceRange('200', '300');
+  await searchResultsPage.setPriceRange('50', '200');
   page = await searchResultsPage.openResultByIndex(3);
   const productPage = new ProductPage(page);
   await productPage.enterQuantity("10000");
