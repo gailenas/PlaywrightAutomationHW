@@ -3,7 +3,6 @@ import { HomePage } from '../pages/home.page.js';
 import { SearchResultsPage } from '../pages/search-results.page.js';
 import { ProductPage } from '../pages/product.page.js';
 import { CartPage } from '../pages/cart.page.js';
-import { setTimeout } from 'node:timers/promises';
 
 test('Search for headphones, filter by Sony and price, add to cart and remove', async ({
   page,
@@ -65,5 +64,4 @@ test('Search for headphones, filter by Sony and price, try to purchase more than
   const productPage = new ProductPage(page);
   await productPage.enterQuantity("10000");
   await productPage.verifyWarningIsVisible();
-  await setTimeout(30000);
 });
