@@ -49,8 +49,7 @@ export class SearchResultsPage {
   }
 
   async validateFilterEnabled(filterValue: string) {
-    let filterLocator = this.page.getByRole('link', { name: `${filterValue} Remove filter` })
-      await expect(filterLocator).toBeVisible();
-
+    let isChecked = await this.page.getByLabel(filterValue, { exact: true }).isChecked();
+    expect(isChecked).toBeTruthy();
   }
 }
