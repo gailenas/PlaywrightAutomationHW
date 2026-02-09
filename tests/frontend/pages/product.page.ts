@@ -24,8 +24,8 @@ export class ProductPage {
   }
   
   async verifyRightProductOpened(productTitle: string) {
-    let openedProductTitle = await this.openedProductTitle.innerText();
-    expect(productTitle.substring(0, 30)).toContain(openedProductTitle.substring(0, 30))
+    let openedProductTitle = (await this.openedProductTitle.innerText());
+    expect(productTitle.replace('NEW LISTING', '').substring(0, 30)).toContain(openedProductTitle.replace('NEW LISTING', '').substring(0, 30))
   }
 
   async enterQuantity(quantity: string) {
