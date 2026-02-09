@@ -1,5 +1,9 @@
 import { type Locator, type Page, expect } from '@playwright/test';
 
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
+
 export class SearchResultsPage {
   private readonly minPriceInput: Locator;
   private readonly maxPriceInput: Locator;
@@ -18,7 +22,7 @@ export class SearchResultsPage {
   }
 
   async filterByBrand(brand: string): Promise<void> {
-    await this.page.waitForTimeout(1000);
+    await this.page.waitForTimeout(process.env.CI ? 5000 : 1000);
     await this.page.getByLabel(brand, { exact: true }).check();
   }
 
