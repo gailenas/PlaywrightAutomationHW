@@ -18,6 +18,7 @@ export class SearchResultsPage {
   }
 
   async filterByBrand(brand: string): Promise<void> {
+    await this.page.waitForTimeout(1000);
     await this.page.getByLabel(brand, { exact: true }).check();
   }
 
